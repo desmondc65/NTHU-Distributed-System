@@ -15,13 +15,34 @@ service Comment {
 	}
 	
 	// gRPC TODO: Complete the following RPC service with correct parameter, return type and gateway option.
-	rpc ListComment() returns () {}
+	rpc CreateComment(CreateCommentRequest) returns (CreateCommentResponse) {
+		option (google.api.http) = {
+			post: "/v1/comments"
+			body: "*"
+			response_body: "id"
+		};
+	}
 
-	rpc CreateComment() returns () {}
+	rpc ListComment(ListCommentRequest) returns (ListCommentResponse) {
+		option (google.api.http) = {
+			get: "/v1/comments/{video_id}"
+			response_body: "*"
+		};
+	}
 
-	rpc UpdateComment() returns () {}
+	rpc UpdateComment(UpdateCommentRequest) returns (UpdateCommentResponse) {
+		option (google.api.http) = {
+			put: "/v1/comments/{id}"
+			body: "content"
+			response_body: "*"
+		};
+	}
 
-	rpc DeleteComment() returns () {}
+	rpc DeleteComment(DeleteCommentRequest) returns (DeleteCommentResponse) {
+		option (google.api.http) = {
+			delete: "/v1/comments/{id}"
+		};
+	}
 
-	rpc DeleteCommentByVideoID() returns () {}
+	rpc DeleteCommentByVideoID(DeleteCommentByVideoIDRequest) returns (DeleteCommentByVideoIDResponse) {}
 }
