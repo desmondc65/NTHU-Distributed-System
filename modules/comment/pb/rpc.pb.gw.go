@@ -285,12 +285,13 @@ func RegisterCommentHandlerServer(ctx context.Context, mux *runtime.ServeMux, se
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/Healthz", runtime.WithHTTPPathPattern("/"))
+		var err error
+		ctx, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/Healthz", runtime.WithHTTPPathPattern("/"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Comment_Healthz_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Comment_Healthz_0(ctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -308,12 +309,13 @@ func RegisterCommentHandlerServer(ctx context.Context, mux *runtime.ServeMux, se
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/ListComment", runtime.WithHTTPPathPattern("/v1/comments/{video_id}"))
+		var err error
+		ctx, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/ListComment", runtime.WithHTTPPathPattern("/v1/comments/{video_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Comment_ListComment_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Comment_ListComment_0(ctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -331,12 +333,13 @@ func RegisterCommentHandlerServer(ctx context.Context, mux *runtime.ServeMux, se
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/CreateComment", runtime.WithHTTPPathPattern("/v1/comments"))
+		var err error
+		ctx, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/CreateComment", runtime.WithHTTPPathPattern("/v1/comments"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Comment_CreateComment_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Comment_CreateComment_0(ctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -354,12 +357,13 @@ func RegisterCommentHandlerServer(ctx context.Context, mux *runtime.ServeMux, se
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/UpdateComment", runtime.WithHTTPPathPattern("/v1/comments/{id}"))
+		var err error
+		ctx, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/UpdateComment", runtime.WithHTTPPathPattern("/v1/comments/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Comment_UpdateComment_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Comment_UpdateComment_0(ctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -377,12 +381,13 @@ func RegisterCommentHandlerServer(ctx context.Context, mux *runtime.ServeMux, se
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/DeleteComment", runtime.WithHTTPPathPattern("/v1/comments/{id}"))
+		var err error
+		ctx, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/comment.pb.Comment/DeleteComment", runtime.WithHTTPPathPattern("/v1/comments/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_Comment_DeleteComment_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_Comment_DeleteComment_0(ctx, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
@@ -439,12 +444,13 @@ func RegisterCommentHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/Healthz", runtime.WithHTTPPathPattern("/"))
+		var err error
+		ctx, err = runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/Healthz", runtime.WithHTTPPathPattern("/"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Comment_Healthz_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Comment_Healthz_0(ctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
@@ -459,12 +465,13 @@ func RegisterCommentHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/ListComment", runtime.WithHTTPPathPattern("/v1/comments/{video_id}"))
+		var err error
+		ctx, err = runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/ListComment", runtime.WithHTTPPathPattern("/v1/comments/{video_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Comment_ListComment_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Comment_ListComment_0(ctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
@@ -479,12 +486,13 @@ func RegisterCommentHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/CreateComment", runtime.WithHTTPPathPattern("/v1/comments"))
+		var err error
+		ctx, err = runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/CreateComment", runtime.WithHTTPPathPattern("/v1/comments"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Comment_CreateComment_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Comment_CreateComment_0(ctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
@@ -499,12 +507,13 @@ func RegisterCommentHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/UpdateComment", runtime.WithHTTPPathPattern("/v1/comments/{id}"))
+		var err error
+		ctx, err = runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/UpdateComment", runtime.WithHTTPPathPattern("/v1/comments/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Comment_UpdateComment_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Comment_UpdateComment_0(ctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
@@ -519,12 +528,13 @@ func RegisterCommentHandlerClient(ctx context.Context, mux *runtime.ServeMux, cl
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/DeleteComment", runtime.WithHTTPPathPattern("/v1/comments/{id}"))
+		var err error
+		ctx, err = runtime.AnnotateContext(ctx, mux, req, "/comment.pb.Comment/DeleteComment", runtime.WithHTTPPathPattern("/v1/comments/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_Comment_DeleteComment_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_Comment_DeleteComment_0(ctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)

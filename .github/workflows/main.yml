@@ -26,7 +26,7 @@ jobs:
     container: golang:1.21
     services:
       mongo:
-        image: mongo:5
+        image: mongo:4.4.6
       postgres:
         image: postgres:14-alpine
         env:
